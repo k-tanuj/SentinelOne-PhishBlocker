@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ PhishGuard Pro - Advanced URL Security Scanner</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>PhishGuard Pro</h1>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-number">With a Good</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="scannedCount">0</span>
+                        <span class="stat-label">URLs Scanned</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Scanner Section -->
+            <section class="scanner-section">
+                <div class="scanner-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-search"></i> Advanced URL Security Scanner</h2>
+                        <p>Detect phishing attempts, homograph attacks, subdomain abuse, and sophisticated threats</p>
+                    </div>
+                    
+                    <!-- Quick Test Buttons -->
+                    <div class="quick-tests">
+                        <h3>Quick Tests</h3>
+                        <div class="test-buttons">
+                            <button class="test-btn safe" onclick="testUrl('https://www.google.com')">
+                                <i class="fas fa-check-circle"></i>
+                                Safe URL
+                            </button>
+                            <button class="test-btn warning" onclick="testUrl('https://signin-apple.com')">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Suspicious URL
+                            </button>
+                            <button class="test-btn danger" onclick="testUrl('www.g00gle.com')">
+                                <i class="fas fa-times-circle"></i>
+                                Phishing URL
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- URL Input -->
+                    <div class="input-section">
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <i class="fas fa-link input-icon"></i>
+                                <input 
+                                    type="text" 
+                                    id="urlInput" 
+                                    placeholder="Enter URL to scan (e.g., https://example.com)"
+                                    autocomplete="off"
+                                />
+                                <button class="clear-btn" id="clearBtn" onclick="clearInput()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <button class="scan-btn" id="scanBtn" onclick="scanUrl()">
+                                <i class="fas fa-search"></i>
+                                Scan URL
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-container" id="loadingContainer">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                        </div>
+                        <p>Analyzing URL with AI-powered detection...</p>
+                        <div class="loading-steps">
+                            <div class="step active">
+                                <i class="fas fa-link"></i>
+                                <span>Parsing URL</span>
+                            </div>
+                            <div class="step">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Security Analysis</span>
+                            </div>
+                            <div class="step">
+                                <i class="fas fa-brain"></i>
+                                <span>AI Classification</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="results-container" id="resultsContainer">
+                        <!-- Result will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h2><i class="fas fa-star"></i> Advanced Detection Capabilities</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>IDN/Punycode Detection</h3>
+                        <p>Identifies internationalized domain names and punycode attacks used to deceive users</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Homograph Analysis</h3>
+                        <p>Detects visually similar characters from different alphabets used in domain spoofing</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3>Subdomain Abuse</h3>
+                        <p>Catches malicious use of subdomains to impersonate legitimate brands and services</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>ML Classification</h3>
+                        <p>Advanced machine learning model with a very good accuracy trained on 247K+ samples</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-check"></i>
+                        </div>
+                        <h3>Brand Protection</h3>
+                        <p>Detects typosquatting and brand impersonation attempts across major platforms</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-time Analysis</h3>
+                        <p>Instant URL scanning with comprehensive threat assessment and detailed reporting</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PhishGuard Pro</h4>
+                    <p>Advanced AI-powered phishing detection system protecting users from sophisticated cyber threats.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>API Endpoints</h4>
+                    <ul>
+                        <li><code>POST /predict</code> - URL Analysis</li>
+                        <li><code>GET /test-samples</code> - Sample Tests</li>
+                        <li><code>GET /docs</code> - API Documentation</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Security Features</h4>
+                    <ul>
+                        <li>Advanced Threat Detection</li>
+                        <li>Real-time URL Analysis</li>
+                        <li>ML-based Classification</li>
+                        <li>Brand Protection System</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PhishGuard Pro. Advanced Phishing Detection System.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
